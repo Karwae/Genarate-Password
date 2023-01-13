@@ -26,3 +26,18 @@ h1{
     text-align: center;
     margin: 0px 0 20px 0;
 }
+
+.checkbox_box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.checkbox_box  .option{
+    width: 50%;
+}
+
+.generate{
+    
+}

@@ -76,6 +76,7 @@ const Generate = () =>{
                 onChange={event => setPassword(event.target.value)}
                 onFocus={() => { navigator.clipboard.writeText(password)}} 
                 />
+            <button onClick={() => { navigator.clipboard.writeText(password)}}>Copy Pass</button>  
             <div className="form">
               <div className="option">
                  <label htmlFor="">Length Password</label>
@@ -86,24 +87,25 @@ const Generate = () =>{
                    onChange={handleChange}
                    />
               </div>
+              <div className="checkbox_box">
               <div className="option">
-                 <label htmlFor="">Lower Case</label>
                   <input type="checkbox" className='lowercase' defaultChecked={true}/>
+                  <label htmlFor="">Lowercase (a-z)</label>
               </div>
               <div className="option">
-                 <label htmlFor="">Upper Case</label>
                   <input type="checkbox" className='uppercase' />
+                  <label htmlFor="">Uppercase (A-Z)</label>
               </div> 
               <div className="option">
-                 <label htmlFor="">Symbols</label>
-                  <input type="checkbox" className='symbols' />
-              </div>
-              <div className="option">
-                 <label htmlFor="">Number</label>
                   <input type="checkbox" className='number' defaultChecked={true}/>
+                  <label htmlFor="">Numbers (0-9)</label>
               </div> 
-              <button onClick={generatePassword}>Generate</button>   
-              <button onClick={() => { navigator.clipboard.writeText(password)}}>Copy Pass</button>  
+              <div className="option">
+                  <input type="checkbox" className='symbols' />
+                  <label htmlFor="">Symbols (!-$^+)</label>
+              </div>
+              </div>
+              <button className='generate' onClick={generatePassword}>Generate</button>   
             </div>
         </div>
       );
