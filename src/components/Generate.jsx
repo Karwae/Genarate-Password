@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
+import InputRange from 'react-input-range';
+import 'react-input-range/lib/css/index.css';
 
 const Generate = () =>{
 
     const [password, setPassword] = useState('');
-    const [value, setValue] = useState(7);
-    const min = 1;
-    const max = 25;
+    const [value, setValue ]= useState(7);
     
     function generatePassword() {
 
@@ -57,16 +57,18 @@ const Generate = () =>{
     setPassword(randomString);
     }
 
-    const handleChange = event => {
-      const value = Math.max(min, Math.min(max, Number(event.target.value)));
-      setValue(value);
-    };
+    // const handleChange = event => {
+    //   const value = Math.max(min, Math.min(max, Number(event.target.value)));
+    //   setValue(value);
+    // };
     
 
     return (
         <div className='container' >
-          
-            <h1>Password Generator</h1>
+          <div class="wrapper">
+        
+            <h2>Password Generator</h2>
+            <div class="input-box">
             <input
                 className='input-pass' 
                 type="text" 
@@ -76,9 +78,19 @@ const Generate = () =>{
                 onChange={event => setPassword(event.target.value)}
                 onFocus={() => { navigator.clipboard.writeText(password)}} 
                 />
+                <div class="pass-length">
+          <div class="details">
+            <label class="title">Password Length</label>
+            <span></span>
+          </div>
+          <InputRange
+        maxValue={20}
+        minValue={0}
+        value={value}
+        onChange={value => setValue(value)} />
+        </div>
             <button onClick={() => { navigator.clipboard.writeText(password)}}>Copy Pass</button>  
-            <div className="form">
-              <div className="option">
+              {/* <div className="option">
                  <label htmlFor="">Length Password</label>
                   <input type="number"
                    className='length_pass' 
@@ -86,8 +98,9 @@ const Generate = () =>{
                    value={value}
                    onChange={handleChange}
                    />
+              </div> */}
               </div>
-              <div className="checkbox_box">
+              <div className="checkbox-box">
               <div className="option">
                   <input type="checkbox" className='lowercase' defaultChecked={true}/>
                   <label htmlFor="">Lowercase (a-z)</label>
@@ -107,7 +120,7 @@ const Generate = () =>{
               </div>
               <button className='generate' onClick={generatePassword}>Generate</button>   
             </div>
-        </div>
+            </div>
       );
 
 }
