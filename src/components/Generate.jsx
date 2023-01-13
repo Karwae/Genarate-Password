@@ -58,13 +58,13 @@ const Generate = () => {
   }
   let passIndicator = document.querySelector(".pass-indicator");
   function updatePassIndicator (value) {
-    passIndicator.id = value <= 8 ? "weak" : value <= 16 ? "medium" : "strong";
     setValue(value);
+    document.querySelector(".value-length").textContent=(value);
+    passIndicator.id = value <= 8 ? "weak" : value <= 16 ? "medium" : "strong";
 }
 
   return (
     <div className="container">
-      <div class="wrapper">
         <h2>Password Generator</h2>
         <div class="input-box">
           <input
@@ -80,29 +80,20 @@ const Generate = () => {
           />
           <div class="pass-indicator"></div>
           <div class="pass-length">
-              <label class="title">Password Length</label>
+              <label>Password Length</label>
+              <span className="value-length">7</span>
+          </div>
             <InputRange
               maxValue={25}
               minValue={0}
               value={value}
               onChange={(value) => updatePassIndicator (value)}
             />
-          </div>
-          <button
-            onClick={() => {
-              navigator.clipboard.writeText(password);
-            }}
-          >
-            Copy Pass
-          </button>
+          {/* <button onClick={() => {navigator.clipboard.writeText(password)}}>Copy Pass</button> */}
         </div>
         <div className="checkbox-box">
           <div className="option">
-            <input
-              type="checkbox"
-              className="lowercase"
-              defaultChecked={true}
-            />
+            <input type="checkbox" className="lowercase" defaultChecked={true}/>
             <label htmlFor="">Lowercase (a-z)</label>
           </div>
           <div className="option">
@@ -118,10 +109,7 @@ const Generate = () => {
             <label htmlFor="">Symbols (!-$^+)</label>
           </div>
         </div>
-        <button className="generate" onClick={generatePassword}>
-          Generate
-        </button>
-      </div>
+        <button className="generate" onClick={generatePassword}>Generate Password</button>
     </div>
   );
 };
