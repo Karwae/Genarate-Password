@@ -3,6 +3,7 @@ import { useState } from "react";
 import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
 import "./App.css";
+import { ReactComponent as Copy }  from './icon/copy-solid.svg';
 
 function App() {
 
@@ -56,6 +57,8 @@ function App() {
       randomString += allChars[randomNumber];
     }
 
+    document.querySelector(".copy-pass").classList.remove("active");
+
     setPassword(randomString);
   }
 
@@ -64,6 +67,11 @@ function App() {
     setValue(value);
     document.querySelector(".value-length").textContent=(value);
     passIndicator.id = value <= 8 ? "weak" : value <= 16 ? "medium" : "strong";
+  }
+
+  function copyIcon () {
+    navigator.clipboard.writeText(password);
+    document.querySelector(".copy-pass").classList.add("active");
   }
 
   return (
@@ -81,6 +89,7 @@ function App() {
               navigator.clipboard.writeText(password);
             }}
           />
+          <Copy className='copy-pass' onClick={() => copyIcon()} />
           <div className="pass-indicator"></div>
           <div className="pass-length">
               <label>Password Length</label>
@@ -92,7 +101,6 @@ function App() {
               value={value}
               onChange={(value) => updatePassIndicator (value)}
             />
-          {/* <button onClick={() => {navigator.clipboard.writeText(password)}}>Copy Pass</button> */}
         </div>
         <div className="checkbox-box">
           <div className="option">
