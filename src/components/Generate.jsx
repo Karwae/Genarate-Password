@@ -78,8 +78,8 @@ const Generate = () => {
               navigator.clipboard.writeText(password);
             }}
           />
-          <div class="pass-indicator"></div>
-          <div class="pass-length">
+          <div className="pass-indicator"></div>
+          <div className="pass-length">
               <label>Password Length</label>
               <span className="value-length">7</span>
           </div>
@@ -94,19 +94,19 @@ const Generate = () => {
         <div className="checkbox-box">
           <div className="option">
             <input type="checkbox" className="lowercase" defaultChecked={true}/>
-            <label htmlFor="">Lowercase (a-z)</label>
+            <label>Lowercase (a-z)</label>
           </div>
           <div className="option">
             <input type="checkbox" className="uppercase" />
-            <label htmlFor="">Uppercase (A-Z)</label>
+            <label>Uppercase (A-Z)</label>
           </div>
           <div className="option">
             <input type="checkbox" className="number" defaultChecked={true} />
-            <label htmlFor="">Numbers (0-9)</label>
+            <label>Numbers (0-9)</label>
           </div>
           <div className="option">
             <input type="checkbox" className="symbols" />
-            <label htmlFor="">Symbols (!-$^+)</label>
+            <label>Symbols (!-$^+)</label>
           </div>
         </div>
         <button className="generate" onClick={generatePassword}>Generate Password</button>
